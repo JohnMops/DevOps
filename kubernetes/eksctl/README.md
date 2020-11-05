@@ -1,4 +1,4 @@
-#Quick start: (no console)
+- Quick start: (no console)
 
 1. Create VPC: copy the ID
 <pre><code>
@@ -128,7 +128,7 @@ aws eks update-kubeconfig --name <cluster_name>
 </code></pre>
 
 
-##Cleanup: 
+- Cleanup: 
 
 1. Run:
 <pre><code>
