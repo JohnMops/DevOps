@@ -128,7 +128,7 @@ aws eks update-kubeconfig --name <cluster_name>
 </code></pre>
 
 
-#Cleanup: 
+##Cleanup: 
 
 1. Run:
 <pre><code>
