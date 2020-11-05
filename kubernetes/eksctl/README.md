@@ -88,7 +88,7 @@ aws ec2 associate-route-table \
 --subnet-id <eks-public-1-id>
 </code></pre>
 
-11. Associate public subnet-1 to public route:
+11. Associate public subnet-2 to public route:
 <pre><code>
 aws ec2 associate-route-table \
 --route-table-id <public_rt_id> \
@@ -102,7 +102,7 @@ aws ec2 associate-route-table \
 --subnet-id <eks-private-1-id>
 </code></pre>
 
-13. Associate private subnet-1 to public route:
+13. Associate private subnet-2 to public route:
 <pre><code>    
 aws ec2 associate-route-table \
 --route-table-id <private_rt_id> \
