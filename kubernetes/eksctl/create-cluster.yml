@@ -1,0 +1,90 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: john # same as the cluster name in subnet tags
+  region: us-east-1
+  version: "1.16"
+
+vpc:
+  subnets:
+    public:
+      us-east-1b: { id: subnet-0a6236ca45c296323 }
+      us-east-1c: { id: subnet-0219ad6857cd5921d }
+    private:
+      us-east-1a: { id: subnet-04aafed8e5d16a522 }
+      us-east-1b: { id: subnet-09e7da1e75b16ffba }
+
+
+nodeGroups:
+  - name: sample-asg-1
+    clusterDNS: 169.254.20.10
+    minSize: 1
+    maxSize: 200
+    desiredCapacity: 1
+    instancesDistribution:
+      instanceTypes: ["t2.small"]
+      onDemandBaseCapacity: 0
+      onDemandPercentageAboveBaseCapacity: 0
+      spotAllocationStrategy: "capacity-optimized"
+    labels:
+      lifecycle: Ec2Spot
+      app: gservice
+      nodegroup-name: spot-30-gservice-2a
+    taints:
+      app: "gservice:NoSchedule"
+    tags:
+      k8s.io/cluster-autoscaler/node-template/label/lifecycle: Ec2Spot
+      k8s.io/cluster-autoscaler/node-template/label/app: gservice
+      k8s.io/cluster-autoscaler/node-template/taint/special: "true:NoSchedule"
+      k8s.io/cluster-autoscaler/enabled: "true"
+      k8s.io/cluster-autoscaler/prod-gamoshi: "owned"
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+    ssh:
+      publicKeyName: eks-worker
+  - name: sample-asg-2
+    clusterDNS: 169.254.20.10
+    minSize: 1
+    maxSize: 200
+    desiredCapacity: 1
+    instancesDistribution:
+      instanceTypes: ["t2.small"]
+      onDemandBaseCapacity: 0
+      onDemandPercentageAboveBaseCapacity: 0
+      spotAllocationStrategy: "capacity-optimized"
+    labels:
+      lifecycle: Ec2Spot
+      app: gservice
+      nodegroup-name: spot-30-gservice-2b
+    taints:
+      app: "gservice:NoSchedule"
+    tags:
+      k8s.io/cluster-autoscaler/node-template/label/lifecycle: Ec2Spot
+      k8s.io/cluster-autoscaler/node-template/label/app: gservice
+      k8s.io/cluster-autoscaler/node-template/taint/special: "true:NoSchedule"
+      k8s.io/cluster-autoscaler/enabled: "true"
+      k8s.io/cluster-autoscaler/prod-gamoshi: "owned"
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+    ssh:
+      publicKeyName: eks-worker
+managedNodeGroups:
+  - name: sample-managed-nodegroup-1
+    #clusterDNS: 169.254.20.10
+    instanceType: t2.small
+    minSize: 1
+    maxSize: 100
+    desiredCapacity: 3
+    volumeSize: 50
+    ssh:
+      publicKeyName: eks-worker
+    labels:
+      nodegroup-name: on-demand-4-16
+    tags:
+      k8s.io/cluster-autoscaler/enabled: "true"
+      k8s.io/cluster-autoscaler/prod-gamoshi: "owned"
+    iam:
+      withAddonPolicies:
+        autoScaler: true
