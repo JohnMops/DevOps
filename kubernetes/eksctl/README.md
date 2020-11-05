@@ -122,6 +122,11 @@ ssh:
 eksctl create cluster -f create-cluster.yml
 </code></pre>
 
+17. Run:
+<pre><code>
+aws eks update-kubeconfig --name <cluster_name>
+</code></pre>
+
 
 #Cleanup: 
 
