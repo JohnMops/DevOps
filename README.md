@@ -33,3 +33,7 @@ The below is a list of tasks we will perform in this project in the best order.
 
 1. Deploying nginx ingress controller to expose an LB outside
 2. Deploy metrics-server for HPA and future monitoring tool usage
+
+- HPA:
+
+1. Deploy the HPA for our app after the metric-server has been initialized and is running
