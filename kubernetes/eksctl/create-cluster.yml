@@ -17,7 +17,7 @@ vpc:
 
 nodeGroups:
   - name: sample-asg-1
-    clusterDNS: 169.254.20.10
+    #clusterDNS: 169.254.20.10
     minSize: 1
     maxSize: 200
     desiredCapacity: 1
@@ -44,7 +44,7 @@ nodeGroups:
     ssh:
       publicKeyName: eks-worker
   - name: sample-asg-2
-    clusterDNS: 169.254.20.10
+    #clusterDNS: 169.254.20.10
     minSize: 1
     maxSize: 200
     desiredCapacity: 1
