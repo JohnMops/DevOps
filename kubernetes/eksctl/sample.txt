@@ -1,0 +1,14 @@
+vpc-0cd4db4a2b9eef19d
+
+p1 subnet-05f957e014ba79f10
+p2 subnet-07f7408b67f545cf2
+pub1 subnet-0a5c0b37a9327995c
+pub2 subnet-07e2ba8a2f2c9bc04
+
+igw igw-013419e79e46e2d2c
+
+eip eipalloc-080ad11e4c115feae
+
+prrt rtb-046fc665e346c7127
+pubrt rtb-066e4d476a4b58baa
+

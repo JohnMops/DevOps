@@ -14,22 +14,22 @@ aws ec2 create-vpc --cidr-block 10.0.0.0/16 \
 
 aws ec2 create-subnet --cidr-block 10.0.16.0/20 \
 --availability-zone us-east-1a \
---vpc-id vpc-00891cacbf2dab1ec \
+--vpc-id vpc-0cd4db4a2b9eef19d \
 --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=eks-private-1},{Key=kubernetes.io/cluster/john,Value=shared},{Key=kubernetes.io/role/internal-elb,Value=1}]' \
 
 aws ec2 create-subnet --cidr-block 10.0.32.0/20 \
 --availability-zone us-east-1b \
---vpc-id vpc-00891cacbf2dab1ec \
+--vpc-id vpc-0cd4db4a2b9eef19d \
 --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=eks-private-2},{Key=kubernetes.io/cluster/john,Value=shared},{Key=kubernetes.io/role/internal-elb,Value=1}]' \
 
 aws ec2 create-subnet --cidr-block 10.0.48.0/20 \
 --availability-zone us-east-1c \
---vpc-id vpc-00891cacbf2dab1ec \
+--vpc-id vpc-0cd4db4a2b9eef19d \
 --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=eks-public-1},{Key=kubernetes.io/cluster/john,Value=shared},{Key=kubernetes.io/role/elb,Value=1}]' \
 
 aws ec2 create-subnet --cidr-block 10.0.64.0/20 \
 --availability-zone us-east-1b \
---vpc-id vpc-00891cacbf2dab1ec \
+--vpc-id vpc-0cd4db4a2b9eef19d \
 --tag-specifications 'ResourceType=subnet,Tags=[{Key=Name,Value=eks-public-2},{Key=kubernetes.io/cluster/john,Value=shared},{Key=kubernetes.io/role/elb,Value=1}]'
  
 </code></pre>
@@ -38,8 +38,8 @@ aws ec2 create-subnet --cidr-block 10.0.64.0/20 \
 <pre><code>
 aws ec2 create-internet-gateway 
 aws ec2 attach-internet-gateway \
---internet-gateway-id igw-01383670a616b4209 \
---vpc-id vpc-00891cacbf2dab1ec
+--internet-gateway-id igw-013419e79e46e2d2c \
+--vpc-id vpc-0cd4db4a2b9eef19d
 
 </code></pre>
 
@@ -53,8 +53,8 @@ aws ec2 allocate-address \
 <pre><code>
 
 aws ec2 create-nat-gateway \
---subnet-id subnet-03bdbebe05fdc224f \
---allocation-id eipalloc-054576febc2435308
+--subnet-id subnet-0a5c0b37a9327995c \
+--allocation-id eipalloc-080ad11e4c115feae
 
 </code></pre>
 
@@ -62,7 +62,7 @@ aws ec2 create-nat-gateway \
 <pre><code>
 
 aws ec2 create-route-table \
---vpc-id vpc-00891cacbf2dab1ec \
+--vpc-id vpc-0cd4db4a2b9eef19d \
 --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=eks-public-rt}]'
 
 </code></pre>
@@ -71,7 +71,7 @@ aws ec2 create-route-table \
 <pre><code>
 
 aws ec2 create-route-table \
---vpc-id vpc-00891cacbf2dab1ec \
+--vpc-id vpc-0cd4db4a2b9eef19d \
 --tag-specifications 'ResourceType=route-table,Tags=[{Key=Name,Value=eks-private-rt}]'
 
 </code></pre>
@@ -81,8 +81,8 @@ aws ec2 create-route-table \
 
 aws ec2 create-route \
 --destination-cidr-block 0.0.0.0/0 \
---gateway-id igw-01383670a616b4209 \
---route-table-id rtb-016878c7e19a60adc
+--gateway-id igw-013419e79e46e2d2c \
+--route-table-id rtb-066e4d476a4b58baa
 
 </code></pre>
 
@@ -91,8 +91,8 @@ aws ec2 create-route \
 
 aws ec2 create-route \
 --destination-cidr-block 0.0.0.0/0 \
---nat-gateway-id nat-036155e4160d9f7dc \
---route-table-id rtb-04c699638f5a169be
+--nat-gateway-id nat-0ed224daf3f88aa0d \
+--route-table-id rtb-046fc665e346c7127
 
 </code></pre>
 
@@ -100,8 +100,8 @@ aws ec2 create-route \
 <pre><code>
 
 aws ec2 associate-route-table \
---route-table-id rtb-016878c7e19a60adc \
---subnet-id subnet-03bdbebe05fdc224f
+--route-table-id rtb-066e4d476a4b58baa \
+--subnet-id subnet-0a5c0b37a9327995c
 
 </code></pre>
 
@@ -109,8 +109,8 @@ aws ec2 associate-route-table \
 <pre><code>
 
 aws ec2 associate-route-table \
---route-table-id rtb-016878c7e19a60adc \
---subnet-id subnet-0f5a12a07d38664de
+--route-table-id rtb-066e4d476a4b58baa \
+--subnet-id subnet-07e2ba8a2f2c9bc04
 
 </code></pre>
 
@@ -118,26 +118,28 @@ aws ec2 associate-route-table \
 <pre><code>
 
 aws ec2 associate-route-table \
---route-table-id rtb-04c699638f5a169be \
---subnet-id subnet-03f705d25ec4e8b2e
+--route-table-id rtb-046fc665e346c7127 \
+--subnet-id subnet-05f957e014ba79f10
 
 </code></pre>
 
 13. Associate private subnet-2 to public route:
 <pre><code>    
+
 aws ec2 associate-route-table \
---route-table-id rtb-04c699638f5a169be \
---subnet-id subnet-0f4dc5a0cc443df2c
+--route-table-id rtb-046fc665e346c7127 \
+--subnet-id subnet-07f7408b67f545cf2
+
 </code></pre>
 
 14. Turn on auto assign public ip on public subnets:
 
 <pre><code> 
 
-aws ec2 modify-subnet-attribute --subnet-id subnet-03bdbebe05fdc224f \
+aws ec2 modify-subnet-attribute --subnet-id subnet-0a5c0b37a9327995c \
 --map-public-ip-on-launch
 
-aws ec2 modify-subnet-attribute --subnet-id subnet-0f5a12a07d38664de \
+aws ec2 modify-subnet-attribute --subnet-id subnet-07e2ba8a2f2c9bc04 \
 --map-public-ip-on-launch
    
 </code></pre>
@@ -153,7 +155,9 @@ ssh:
 
 17. Run: 
 <pre><code>
+
 eksctl create cluster -f create-cluster.yml
+
 </code></pre>
 
 18. Run:

@@ -9,6 +9,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  #volumeName: pvc-0d5e489e-3866-4c61-90fe-2f3605a6c22e
   storageClassName: gp2
   volumeMode: Filesystem
