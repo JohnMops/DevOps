@@ -21,3 +21,13 @@ kubectl apply -f redis-master-service.yaml
 kubectl -napp get svc #check service
 
 </code></pre>
+
+3. Deploy redis slave service:
+
+<pre><code>
+
+kubectl apply -f redis-slave-service.yaml
+
+kubectl -napp get svc #check service
+
+</code></pre>

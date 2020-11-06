@@ -35,6 +35,6 @@ spec:
           ports:
             - containerPort: 6379
       volumes:
-        - name: redis-slave-voleume
+        - name: redis-slave-volume
           persistentVolumeClaim:
             claimName: slave-pvc

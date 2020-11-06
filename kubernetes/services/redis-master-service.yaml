@@ -8,6 +8,7 @@ metadata:
     tier: backend
     role: master
 spec:
+  type: ClusterIP
   ports:
     - port: 6379
       targetPort: 6379

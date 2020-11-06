@@ -27,6 +27,6 @@ spec:
           ports:
             - containerPort: 6379
       volumes:
-        - name: redis-master-voleume
+        - name: redis-master-volume
           persistentVolumeClaim:
-            claimName: frontend-pvc
+            claimName: master-pvc

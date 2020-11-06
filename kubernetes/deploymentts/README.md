@@ -48,7 +48,22 @@ kubectl -napp port-forward pod_name 80:80
 
 6. Open browser and check localhost:80
 
-7. 
+7. Try to inout some data
+
+8. Delete redis pods: 
+
+<pre><code>
+
+kubectl -napp delete po pod_name    
+
+</code></pre>
+
+9. Access the site again, the data will be gone
+
+For this we will need a persistent storage to hold the data if the pods
+go down. 
+
+See ../pv folder
 
 
 
