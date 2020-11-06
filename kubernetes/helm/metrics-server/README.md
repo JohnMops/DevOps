@@ -1,5 +1,6 @@
 Link: https://github.com/helm/charts/tree/master/stable/metrics-server
 
+Issues: https://github.com/kubernetes-sigs/metrics-server/issues
 
 Metrics Server is a cluster-wide aggregator of resource usage data. Resource metrics are used by components like kubectl top and the Horizontal Pod Autoscaler to scale workloads.
 
