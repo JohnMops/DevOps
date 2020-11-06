@@ -28,6 +28,8 @@ kubectl -napp get po # check the pods
 
 </code></pre>
 
+--- Please go to ../pv and provision the PVC ---
+
 4. Deploy redis slave:
 
 <pre><code>
@@ -48,22 +50,11 @@ kubectl -napp port-forward pod_name 80:80
 
 6. Open browser and check localhost:80
 
-7. Try to inout some data
+Try to input data. 
+This will not work since we do not have services that are exposing
+those objects to each other.
 
-8. Delete redis pods: 
-
-<pre><code>
-
-kubectl -napp delete po pod_name    
-
-</code></pre>
-
-9. Access the site again, the data will be gone
-
-For this we will need a persistent storage to hold the data if the pods
-go down. 
-
-See ../pv folder
+Go to ../services to create them
 
 
 
