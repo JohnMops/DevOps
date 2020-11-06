@@ -169,15 +169,37 @@ aws eks update-kubeconfig --name cluster_name
 eksctl delete cluster -f create-cluster.yml
 </code></pre>
 
-2. Delete vpc
+2. Delete NATGW:
+
 <pre><code>
-aws ec2 delete-vpc --vpc-id vpc_id
+
+aws ec2 delete-nat-gateway \
+--nat-gateway-id nat-036155e4160d9f7dc
+
 </code></pre>
 
-3. Delete subnets:
+3. Delete Route tables: 
+
 <pre><code>
+
+aws ec2 delete-route-table \
+--route-table-id rtb-04c699638f5a169be
+
+</code></pre>
+
+3. Delete vpc
+<pre><code>
+
+aws ec2 delete-vpc --vpc-id vpc_id
+
+</code></pre>
+
+4. Delete subnets:
+<pre><code>
+
 aws ec2 delete-subnet --subnet-id subnet-00023b91a4c2c00eb
 aws ec2 delete-subnet --subnet-id subnet-0219ad6857cd5921d
 aws ec2 delete-subnet --subnet-id subnet-09e7da1e75b16ffba
 aws ec2 delete-subnet --subnet-id subnet-04aafed8e5d16a522
+
 </code></pre>
