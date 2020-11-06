@@ -21,7 +21,7 @@ terraform apply -auto-approve # immediate apply
 
 </code></pre>
 
-3. Destroy:
+- Destroy:
 
 <pre><code>
 
