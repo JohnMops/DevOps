@@ -1,6 +1,9 @@
 # DevOps
 Tools and Mini Projects
 
+This is not a beginner repo but will help someone who tries to perform/install/operate different
+tools and technologies.
+
 The below is a list of tasks we will perform in this project in the best order.
 
 - Create cluster:
