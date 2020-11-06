@@ -17,6 +17,7 @@ terraform init
 <pre><code>
 
 terraform apply # will present a plan and ask to continue
+
 terraform apply -auto-approve # immediate apply 
 
 </code></pre>
