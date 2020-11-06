@@ -25,3 +25,8 @@ The below is a list of tasks we will perform in this project in the best order.
 1. Deploying a Persistent Volume Claim for the application
 2. Deploying a Persistent Volume Claim for the redis master
 3. Deploying a Persistent Volume Claim for the redis slave
+
+- Helm: 
+
+1. Deploying nginx ingress controller to expose an LB outside
+2. Deploy metrics-server for HPA and future monitoring tool usage
