@@ -1,5 +1,5 @@
 # DevOps
-Tools and Mini Projects
+Tools and Mini Projects on emphasis on AWS EKS
 
 This is not a beginner repo but will help someone who tries to perform/install/operate different
 tools and technologies.
