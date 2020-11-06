@@ -142,7 +142,8 @@ aws ec2 modify-subnet-attribute --subnet-id subnet-0f5a12a07d38664de \
    
 </code></pre>
 
-15. Fill the create-cluster.yml with the subnet values
+15. Fill the create-cluster.yml with the subnet values and other information you want to customize.
+    This will create 2 ASGs and 1 managed nodegroup for your eks cluster.
 
 16. Change the below block with your own key name in each group:
 <pre><code>
