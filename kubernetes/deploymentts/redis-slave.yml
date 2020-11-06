@@ -24,6 +24,9 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
+          volumeMounts:
+            - mountPath: "/data"
+              name: redis-slave-volume
           env:
             - name: GET_HOSTS_FROM
               value: dns

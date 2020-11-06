@@ -24,6 +24,9 @@ spec:
             requests:
               cpu: 100m
               memory: 100Mi
+          volumeMounts:
+            - mountPath: "/data"
+              name: redis-master-volume
           ports:
             - containerPort: 6379
       volumes:

@@ -15,3 +15,12 @@ kubectl -napp get pvc # check status of pvc
 
 The fact that we mentioned those PVCs in the deployments, will insure those will be used
 
+- Deleting PVC:
+
+In case it gets stuck on "terminating" use this trick:
+
+<pre><code>
+
+kubectl patch pvc pvc_name -p '{"metadata":{"finalizers":null}}'
+
+</code></pre>
