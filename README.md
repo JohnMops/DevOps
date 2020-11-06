@@ -1,6 +1,7 @@
 # DevOps
 Tools and Mini Projects
 
+The below is a list of tasks we will perform in this project in the best order.
 
 - Create cluster:
 
