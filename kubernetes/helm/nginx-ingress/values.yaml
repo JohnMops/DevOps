@@ -1,6 +1,7 @@
 ## nginx configuration
 ## Ref: https://github.com/kubernetes/ingress-nginx/blob/master/controllers/nginx/configuration.md
 ##
+fullNameOverride: nginx-ic
 controller:
   image:
     repository: k8s.gcr.io/ingress-nginx/controller
