@@ -1,3 +1,5 @@
+# Go over the tags as well and make sure your cluster name is used in each one
+
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
@@ -37,7 +39,7 @@ nodeGroups:
       k8s.io/cluster-autoscaler/node-template/label/app: guestbook
       k8s.io/cluster-autoscaler/node-template/taint/special: "true:NoSchedule"
       k8s.io/cluster-autoscaler/enabled: "true"
-      k8s.io/cluster-autoscaler/prod-gamoshi: "owned"
+      k8s.io/cluster-autoscaler/john: "owned"
     iam:
       withAddonPolicies:
         autoScaler: true
@@ -64,7 +66,7 @@ nodeGroups:
       k8s.io/cluster-autoscaler/node-template/label/app: redisslave
       k8s.io/cluster-autoscaler/node-template/taint/special: "true:NoSchedule"
       k8s.io/cluster-autoscaler/enabled: "true"
-      k8s.io/cluster-autoscaler/prod-gamoshi: "owned"
+      k8s.io/cluster-autoscaler/john: "owned"
     iam:
       withAddonPolicies:
         autoScaler: true
@@ -84,7 +86,7 @@ managedNodeGroups:
       nodegroup-name: on-demand-4-16
     tags:
       k8s.io/cluster-autoscaler/enabled: "true"
-      k8s.io/cluster-autoscaler/prod-gamoshi: "owned"
+      k8s.io/cluster-autoscaler/john: "owned"
     iam:
       withAddonPolicies:
         autoScaler: true
