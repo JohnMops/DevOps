@@ -1,0 +1,17 @@
+We can create a dedicated PV and use it in the claim but I prefer working with PVCs which will 
+automatically provision a PV for us upon request.
+
+- Deploy a pvc for redis slave and master: 
+
+<pre><code>
+
+kubectl apply -f redis-master-pvc.yaml
+
+kubectl apply -f redis-slave-pvc.yaml
+
+kubectl -napp get pvc # check status of pvc
+
+</code></pre>
+
+The fact that we mentioned those PVCs in the deployments, will insure those will be used
+
