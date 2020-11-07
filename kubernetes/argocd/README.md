@@ -53,6 +53,15 @@ created.
 - Status review
 - And more!
 
+- Default username: admin
+- Get the password: 
+
+<pre><code>
+
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
+
+</code></pre>
+
 5. Check your deployment: 
 
 <pre><code>
