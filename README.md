@@ -37,6 +37,9 @@ tools and technologies.
 4. Cert Manager
 5. Flux
 6. Local node DNS cache
+7. Argo Flux
+8. Vault
+9. Consul
 
 ---------------------------------------------
 
