@@ -6,6 +6,7 @@ tools and technologies.
 
 - The below is a list of tasks we will perform in this project in the best order.
 
+---------------------------------------------
 
 - Current repo has:
 
@@ -36,6 +37,8 @@ tools and technologies.
 4. Cert Manager
 5. Flux
 6. Local node DNS cache
+
+---------------------------------------------
 
 - Create cluster:
 
