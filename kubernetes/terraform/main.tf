@@ -1,5 +1,5 @@
 provider "aws" {
-  region                  = local.region
+  region = local.region
 
 }
 
@@ -30,8 +30,8 @@ resource "aws_eip" "nat-ngw-eip" {
   count = local.az_count
 
   tags = {
-    environment   = local.env
-    created_by    = local.tags.created_by
+    environment = local.env
+    created_by  = local.tags.created_by
   }
 
 }
@@ -48,9 +48,9 @@ resource "aws_vpc" "main" {
 
   tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    Name = "${local.env}-vpc"
-    environment   = local.env
-    created_by    = local.tags.created_by
+    Name                                          = "${local.env}-vpc"
+    environment                                   = local.env
+    created_by                                    = local.tags.created_by
   }
 
 }
@@ -60,14 +60,14 @@ resource "aws_vpc" "main" {
 ##########################
 
 resource "aws_nat_gateway" "natgw" {
-  count                 = local.az_count // we need a ngw per private subnet
-  allocation_id         = element(aws_eip.nat-ngw-eip.*.id, count.index)
-  subnet_id             = element(aws_subnet.public_subnets.*.id, count.index)
+  count         = local.az_count // we need a ngw per private subnet
+  allocation_id = element(aws_eip.nat-ngw-eip.*.id, count.index)
+  subnet_id     = element(aws_subnet.public_subnets.*.id, count.index)
 
   tags = {
-    Name = "${local.env}-ngw-${count.index}"
-    environment   = local.env
-    created_by    = local.tags.created_by
+    Name        = "${local.env}-ngw-${count.index}"
+    environment = local.env
+    created_by  = local.tags.created_by
   }
 }
 
@@ -141,15 +141,15 @@ resource "aws_route_table_association" "public" {
 ##### Public Subnet #####
 //currently not being used , will be required once we need an ingress external internet access (to the cluster)
 resource "aws_subnet" "public_subnets" {
-  count                   = local.az_count
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = cidrsubnet(local.cidr_block, 6, count.index)
-  availability_zone       = element(local.azs, count.index)
+  count             = local.az_count
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = cidrsubnet(local.cidr_block, 6, count.index)
+  availability_zone = element(local.azs, count.index)
 
   tags = {
-    "kubernetes.io/role/elb" = "1"
+    "kubernetes.io/role/elb"                      = "1"
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    Name = "${local.env}-public-subnet-${element(local.azs, count.index)}"
+    Name                                          = "${local.env}-public-subnet-${element(local.azs, count.index)}"
   }
 }
 
@@ -162,9 +162,9 @@ resource "aws_subnet" "eks_internal_subnets" {
 
 
   tags = {
-    "kubernetes.io/role/internal-elb" = "1"
+    "kubernetes.io/role/internal-elb"             = "1"
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-    Name = "${local.env}-internal-subnet-${element(local.azs, count.index)}"
+    Name                                          = "${local.env}-internal-subnet-${element(local.azs, count.index)}"
   }
 }
 
@@ -176,9 +176,9 @@ resource "aws_subnet" "eks_internal_subnets" {
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_version = "1.16"
-  cluster_name = local.cluster_name
-  subnets = aws_subnet.eks_internal_subnets.*.id
-  vpc_id = aws_vpc.main.id
+  cluster_name    = local.cluster_name
+  subnets         = aws_subnet.eks_internal_subnets.*.id
+  vpc_id          = aws_vpc.main.id
   map_users       = var.map_users // "Additional IAM roles/User to add to the aws-auth configmap. See examples/basic/variables.tf for example format"
   map_roles       = var.map_roles
 
@@ -196,6 +196,7 @@ module "eks" {
     autoscaling_enabled     = workerGroup.autoscaling_enabled
     subnets                 = aws_subnet.eks_internal_subnets.*.id
     ebs_optimized           = false
+    tags                    = workerGroup.tags
   }]
 }
 

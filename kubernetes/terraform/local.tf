@@ -22,7 +22,7 @@ locals {
       "tags"                    : [
         {
           "key" = "k8s.io/cluster-autoscaler/node-template/label/type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value" = "cluster-system"
         }],
       "volume_size"             : 30,
@@ -44,7 +44,7 @@ locals {
       "tags"                    : [
         {
           "key" = "k8s.io/cluster-autoscaler/node-template/label/type"
-          "propagate_at_launch" = "false"
+          "propagate_at_launch" = "true"
           "value" = "cluster-system"
         }],
       "volume_size"             : 30,
