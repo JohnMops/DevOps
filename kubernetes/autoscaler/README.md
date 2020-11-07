@@ -45,6 +45,7 @@ command:
             - --skip-nodes-with-local-storage=false
             - --expander=least-waste
             - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/node-template/label/type # here <<<<<
+            # Currently the same as the tags in /terraform/local.tf > eks_worker_groups_config_initial > tags
 
 </code></pre>
 
