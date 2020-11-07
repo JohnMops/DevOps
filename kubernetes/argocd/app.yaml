@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/JohnMops/DevOps # what github repo to watch
     targetRevision: HEAD
-    path: kubernetes/argocd # path to your deployment files
+    path: kubernetes/argocd/application # path to your deployment files
     directory:
       recurse: true # go through all the folders inside the path
   destination:
