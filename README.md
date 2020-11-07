@@ -8,8 +8,12 @@ The below is a list of tasks we will perform in this project in the best order.
 
 - Create cluster:
 
-1. Create via eksctl
-2. Create via terraform
+1. Create via /eksctl
+2. Create via /terraform
+
+- Autoscaler:
+
+1. Deploy the autoscaler for k8s ASGs
 
 - Deployments: 
 
@@ -37,3 +41,9 @@ The below is a list of tasks we will perform in this project in the best order.
 - HPA:
 
 1. Deploy the HPA for our app after the metric-server has been initialized and is running
+
+- ArgoCD:
+
+1. Deploy ArgoCD into the cluster
+2. Deploy your application config file
+3. Review the ArgoCD UI to examine the pipeline
