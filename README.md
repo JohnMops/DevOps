@@ -1,6 +1,12 @@
 # DevOps
 Tools and Mini Projects on emphasis on AWS EKS
 
+- This is not a beginner repo but will help someone who tries to perform/install/operate different
+tools and technologies.
+
+- The below is a list of tasks we will perform in this project in the best order.
+
+
 - Current repo has:
 
 1. ArgoCD
@@ -28,15 +34,6 @@ Tools and Mini Projects on emphasis on AWS EKS
 4. Cert Manager
 5. Flux
 6. Local node DNS cache
-
-
-This is not a beginner repo but will help someone who tries to perform/install/operate different
-tools and technologies.
-
-The below is a list of tasks we will perform in this project in the best order.
-
-
-
 
 - Create cluster:
 
