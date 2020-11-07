@@ -12,14 +12,13 @@ locals {
   eks_worker_groups_config_initial = [
     {
       ### Needed for the initial deployment of pods
-      "name"                    : "initial",
-      "asg_desired_capacity"    : "3",
+      "name"                    : "main",
+      "asg_desired_capacity"    : "2",
       // will take affect only when creating the ASG
       "asg_min_size"            : "1",
       "asg_max_size"            : "3",
-      "key_name"                : "dev_eks_keys",
+      "key_name"                : "eks-worker",
       "kubelet_extra_args"      : "--node-labels=type=cluster-system,node_role=main"
-      //these tags are used by the cluster-autoscaler for auto discovery (defined in cluster-autoscaler-values.tpl)
       "tags"                    : [
         {
           "key" = "k8s.io/cluster-autoscaler/node-template/label/type"
@@ -35,14 +34,13 @@ locals {
     },
     {
       ### Needed for the initial deployment of pods
-      "name"                    : "secondery",
-      "asg_desired_capacity"    : "3",
+      "name"                    : "secondary",
+      "asg_desired_capacity"    : "2",
       // will take affect only when creating the ASG
       "asg_min_size"            : "1",
       "asg_max_size"            : "3",
-      "key_name"                : "dev_eks_keys",
-      "kubelet_extra_args"      : "--node-labels=type=cluster-system,node_role=main"
-      //these tags are used by the cluster-autoscaler for auto discovery (defined in cluster-autoscaler-values.tpl)
+      "key_name"                : "eks-worker",
+      "kubelet_extra_args"      : "--node-labels=type=cluster-system,node_role=secondary"
       "tags"                    : [
         {
           "key" = "k8s.io/cluster-autoscaler/node-template/label/type"

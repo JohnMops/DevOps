@@ -174,9 +174,8 @@ resource "aws_subnet" "eks_internal_subnets" {
 
 
 module "eks" {
-
   source          = "terraform-aws-modules/eks/aws"
-
+  cluster_version = "1.16"
   cluster_name = local.cluster_name
   subnets = aws_subnet.eks_internal_subnets.*.id
   vpc_id = aws_vpc.main.id
