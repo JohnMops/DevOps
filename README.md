@@ -8,8 +8,8 @@ The below is a list of tasks we will perform in this project in the best order.
 
 - Create cluster:
 
-1. Create via /eksctl
-2. Create via /terraform
+1. Create via /eksctl: infrastructure via aws cli
+2. Create via /terraform: infrastructure via terraform
 
 - Autoscaler:
 
