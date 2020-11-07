@@ -26,6 +26,8 @@ tools and technologies.
     - Prometheus
 10. Service for the application
 
+---------------------------------------------
+
 - Road Map: (will be added to the below list)
 
 1. Prometheus
