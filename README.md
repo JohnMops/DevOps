@@ -1,6 +1,25 @@
 # DevOps
 Tools and Mini Projects on emphasis on AWS EKS
 
+- Current repo has:
+
+1. ArgoCD
+2. Autoscaler
+3. App deployment
+4. Create cluster with eksctl (infrastructure with aws cli)
+5. Craete cluster with terraform
+6. Helm:
+    - Metrics-server
+    - Nginx-ingress controller
+7. HPA for the application
+8. Ingress for the application
+9. PVCs for:
+    - Application
+    - DB
+    - Grafana
+    - Prometheus
+10. Service for the application
+
 - Road Map: (will be added to the below list)
 
 1. Prometheus
