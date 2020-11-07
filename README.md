@@ -1,10 +1,23 @@
 # DevOps
 Tools and Mini Projects on emphasis on AWS EKS
 
+- Road Map: (will be added to the below list)
+
+1. Prometheus
+2. Grafana
+3. Termination handler for spot instances
+4. Cert Manager
+5. Flux
+6. Local node DNS cache
+
+
 This is not a beginner repo but will help someone who tries to perform/install/operate different
 tools and technologies.
 
 The below is a list of tasks we will perform in this project in the best order.
+
+
+
 
 - Create cluster:
 
