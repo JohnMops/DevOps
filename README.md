@@ -84,3 +84,4 @@ tools and technologies.
 1. Deploy ArgoCD into the cluster
 2. Deploy your application config file
 3. Review the ArgoCD UI to examine the pipeline
+4. Added a helm chart sync demo for metrics-server in /helm folder with instructionsgit 
