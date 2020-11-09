@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metric-server
+  namespace: kube-system
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JohnMops/DevOps # what github repo to watch
+    targetRevision: HEAD
+    path: kubernetes/argocd/application/helm/metrics-server # path to your deployment files
+    directory:
+      recurse: true # go through all the folders inside the path
+    helm:
+      version: v3
+      releaseName: metric-server
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc # local cluster where argo is deployed
+    namespace: kube-system # which namespace to deploy to
+  syncPolicy:
+    automated: # roll out automatically when making changes
+      prune: false
+      selfHeal: false
