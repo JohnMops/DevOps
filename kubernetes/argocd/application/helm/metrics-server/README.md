@@ -1,42 +1,74 @@
-# metrics-server
+In this example we will create an ArgoCD application that will look at our metrics server chart in the git repo and 
+sync it to the cluster.
 
-[Metrics Server](https://github.com/kubernetes-incubator/metrics-server) is a cluster-wide aggregator of resource usage data. Resource metrics are used by components like `kubectl top` and the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale) to scale workloads. To autoscale based upon a custom metric, see the [Prometheus Adapter chart](https://github.com/helm/charts/blob/master/stable/prometheus-adapter).
+1. Take a look at the folder structure of the metric-server helm chart: 
 
-## Configuration
+<pre><code>
 
-Parameter | Description | Default
---- | --- | ---
-`rbac.create` | Enable Role-based authentication | `true`
-`rbac.pspEnabled` | Enable pod security policy support | `false`
-`serviceAccount.create` | If `true`, create a new service account | `true`
-`serviceAccount.name` | Service account to be used. If not set and `serviceAccount.create` is `true`, a name is generated using the fullname template | ``
-`apiService.create` | Create the v1beta1.metrics.k8s.io API service | `true`
-`hostNetwork.enabled` | Enable hostNetwork mode | `false`
-`image.repository` | Image repository | `k8s.gcr.io/metrics-server-amd64`
-`image.tag` | Image tag | `v0.3.2`
-`image.pullPolicy` | Image pull policy | `IfNotPresent`
-`imagePullSecrets` | Image pull secrets | `[]`
-`args` | Command line arguments | `[]`
-`resources` | CPU/Memory resource requests/limits. | `{}`
-`tolerations` | List of node taints to tolerate (requires Kubernetes >=1.6) | `[]`
-`nodeSelector` | Node labels for pod assignment | `{}`
-`affinity` | Node affinity | `{}`
-`replicas` | Number of replicas | `1`
-`extraVolumeMounts` | Ability to provide volume mounts to the pod | `[]`
-`extraVolumes` | Ability to provide volumes to the pod | `[]`
-`livenessProbe` | Container liveness probe | See values.yaml
-`podLabels` | Labels to be added to pods | `{}`
-`podAnnotations` | Annotations to be added to pods | `{}`
-`priorityClassName` | Pod priority class | `""`
-`readinessProbe` | Container readiness probe | See values.yaml
-`service.annotations` | Annotations to add to the service | `{}`
-`service.labels` | Labels to be added to the metrics-server service | `{}`
-`service.port` | Service port to expose | `443`
-`service.type` | Type of service to create | `ClusterIP`
-`podDisruptionBudget.enabled` | Create a PodDisruptionBudget | `false`
-`podDisruptionBudget.minAvailable` | Minimum available instances; ignored if there is no PodDisruptionBudget |
-`podDisruptionBudget.maxUnavailable` | Maximum unavailable instances; ignored if there is no PodDisruptionBudget |
-`extraContainers`   | Add additional containers  | `[]`
-`testImage.repository` | Image repository and name for test pod.  See also `imagePullSecrets` | `busybox`
-`testImage.tag` | Image tag for test pod | `latest`
-`testImage.pullPolicy` | Image pull policy for test pod | `IfNotPresent`
+metrics-server/
+├── Chart.yaml
+├── README.md
+├── ci
+│   └── ci-values.yaml
+├── templates
+│   ├── NOTES.txt
+│   ├── _helpers.tpl
+│   ├── aggregated-metrics-reader-cluster-role.yaml
+│   ├── auth-delegator-crb.yaml
+│   ├── cluster-role.yaml
+│   ├── metric-server-service.yaml
+│   ├── metrics-api-service.yaml
+│   ├── metrics-server-crb.yaml
+│   ├── metrics-server-deployment.yaml
+│   ├── metrics-server-serviceaccount.yaml
+│   ├── pdb.yaml
+│   ├── psp.yaml
+│   ├── role-binding.yaml
+│   └── tests
+│       └── test-version.yaml
+└── values.yaml    
+
+</code></pre>
+
+- Chart is holding the information of the metrics-server chart
+- templates folder have the templates for all the objects that will be created for the metrics-server
+- values.yaml is our own file that we have already used previously
+
+2. Follow the steps to install ArgoCD cli: https://argoproj.github.io/argo-cd/getting_started/
+
+3. Get the password in case it will ask for it later: 
+
+<pre><code>
+
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
+
+</code></pre>
+
+4. Port-forward the ArgoCD server to your localhost: 
+
+<pre><code>
+
+kubectl -n argocd port-forward svc/argocd-server -n argocd 8080:443
+
+</code></pre>
+
+5. Connect to the server using cli:
+
+<pre><code>
+
+argocd login localhost:port_number --insecure --username admin
+
+</code></pre>
+
+6. Creating an app via ArgoCD cli: 
+
+<pre><code>
+
+argocd app create metric-server --repo https://github.com/JohnMops/DevOps --path kubernetes/argocd/application/helm/metrics-server --dest-namespace kube-system --dest-server https://kubernetes.default.svc  --self-heal --sync-policy auto    
+
+</code></pre>
+
+7. Access UI by going to localhost:port_number
+
+8. Check the application pipeline to see the progress
+
