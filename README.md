@@ -35,12 +35,11 @@ tools and technologies.
 1. Prometheus
 2. Grafana
 3. Termination handler for spot instances
-4. Cert Manager
-5. Flux
-6. Local node DNS cache
-7. Argo Flux
-8. Vault
-9. Consul
+4. Flux
+5. Local node DNS cache
+6. Argo Flux
+7. Vault
+8. Consul
 
 ---------------------------------------------
 
