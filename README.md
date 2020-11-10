@@ -18,7 +18,7 @@ tools and technologies.
 6. Helm:
     - Metrics-server
     - Nginx-ingress controller
-    - Cert-manager via helm to auto provision and auto renew certificates for TLS traffic to your services
+    - Cert-manager to auto provision and auto renew certificates for TLS traffic to your services
 7. HPA for the application
 8. Ingress for the application
 9. PVCs for:
