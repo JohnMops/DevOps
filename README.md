@@ -26,6 +26,7 @@ tools and technologies.
     - Grafana
     - Prometheus
 10. Service for the application
+11. Cert-manager via helm to auto provision and auto renew certificates for TLS traffic to your services.
 
 ---------------------------------------------
 
