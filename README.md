@@ -74,6 +74,7 @@ tools and technologies.
 
 1. Deploying nginx ingress controller to expose an LB outside
 2. Deploy metrics-server for HPA and future monitoring tool usage
+3. Deploy cert-manager to secure your server using let's encrypt free certificates and auto renew them
 
 - HPA:
 
@@ -84,4 +85,4 @@ tools and technologies.
 1. Deploy ArgoCD into the cluster
 2. Deploy your application config file
 3. Review the ArgoCD UI to examine the pipeline
-4. Added a helm chart sync demo for metrics-server in /helm folder with instructionsgit 
+4. Added a helm chart sync demo for metrics-server in /helm folder with instructions

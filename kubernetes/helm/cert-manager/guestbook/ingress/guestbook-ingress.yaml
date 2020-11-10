@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  namespace: app
+  annotations:
+    kubernetes.io/ingress.class: nginx # not needed if there is a single nginx ingress controller
+    kubernetes.io/tls-acme: "true" # specifies using tls
+    cert-manager.io/cluster-issuer: letsencrypt-prod # which cluster issuer we will use
+spec:
+  tls:
+    - secretName: www.johnmops.com
+      hosts:
+        - www.johnmops.com
+  rules:
+    - host: www.johnmops.com # get a free domain and use it
+      http:
+        paths:
+          - backend:
+              serviceName: frontend
+              servicePort: 80

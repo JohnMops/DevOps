@@ -1,0 +1,15 @@
+kind: ClusterIssuer
+apiVersion: cert-manager.io/v1alpha2
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: evgenibir@outlook.com # your domain email
+    privateKeySecretRef:
+      key: ""
+      name: let-encrypt-private-key
+    server: 'https://acme-v02.api.letsencrypt.org/directory'
+    solvers: #will the nginx ingress as a default solver for the domain validation
+      - http01:
+          ingress:
+            class: nginx
