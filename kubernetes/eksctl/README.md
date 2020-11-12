@@ -8,7 +8,7 @@ aws ec2 create-vpc --cidr-block 10.0.0.0/16 \
 
 </code></pre>
 
-2. Create 3 subnets: copy the IDs
+2. Create 4 subnets: copy the IDs
 
 <pre><code>
 
@@ -225,6 +225,6 @@ aws ec2 delete-internet-gateway \
 7. Delete vpc
 <pre><code>
 
-aws ec2 delete-vpc --vpc-id vpc-0cd4db4a2b9eef19d
+aws ec2 delete-vpc --vpc-id vpc-00a4aa181bb2a46da
 
 </code></pre>
