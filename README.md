@@ -45,7 +45,7 @@ tools and technologies.
 
 - Create cluster:
 
-1. Create via /eksctl: infrastructure via aws cli
+1. Create via /eksctl: infrastructure via aws cli manual/script
 2. Create via /terraform: infrastructure via terraform
 
 - Autoscaler:
