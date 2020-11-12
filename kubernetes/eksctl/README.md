@@ -1,5 +1,7 @@
 - Quick start: (no console)
 
+Either run those commands to get your hand dirty or run ./script.sh
+
 1. Create VPC: copy the ID
 <pre><code>
 
