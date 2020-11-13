@@ -11,6 +11,7 @@ tools and technologies.
 - Current repo has:
 
 1. ArgoCD
+2. Flux
 2. Autoscaler
 3. App deployment
 4. Create cluster with eksctl (infrastructure with aws cli)
@@ -35,11 +36,10 @@ tools and technologies.
 1. Prometheus
 2. Grafana
 3. Termination handler for spot instances
-4. Flux
-5. Local node DNS cache
-6. Argo Flux
-7. Vault
-8. Consul
+4. Local node DNS cache
+5. Argo Flux
+6. Vault
+7. Consul
 
 ---------------------------------------------
 
