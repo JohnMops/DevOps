@@ -34,7 +34,7 @@ kubectl top node
 
 <pre><code>
 
-helm upgrade --install metric-server stable/metrics-server --values values.yaml
+helm upgrade --install metric-server bitnami/metrics-server --values values.yaml
 
 </code></pre>
 
