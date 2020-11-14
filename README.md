@@ -41,6 +41,7 @@ tools and technologies.
 6. Vault
 7. Consul
 8. Packer
+9. Rancher
 
 ---------------------------------------------
 
