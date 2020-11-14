@@ -42,6 +42,7 @@ tools and technologies.
 5. Consul
 6. Packer
 7. Rancher
+8. Kustomize
 
 ---------------------------------------------
 
