@@ -40,6 +40,7 @@ tools and technologies.
 5. Argo Flux
 6. Vault
 7. Consul
+8. Packer
 
 ---------------------------------------------
 
