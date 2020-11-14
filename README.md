@@ -17,6 +17,8 @@ tools and technologies.
 4. Create cluster with eksctl (infrastructure with aws cli)
 5. Craete cluster with terraform
 6. Helm:
+    - Prometheus
+    - Grafana
     - Metrics-server
     - Nginx-ingress controller
     - Cert-manager to auto provision and auto renew certificates for TLS traffic to your services
@@ -33,15 +35,13 @@ tools and technologies.
 
 - Road Map: (will be added to the below list)
 
-1. Prometheus
-2. Grafana
-3. Termination handler for spot instances
-4. Local node DNS cache
-5. Argo Flux
-6. Vault
-7. Consul
-8. Packer
-9. Rancher
+1. Termination handler for spot instances
+2. Local node DNS cache
+3. Argo Flux
+4. Vault
+5. Consul
+6. Packer
+7. Rancher
 
 ---------------------------------------------
 
@@ -77,6 +77,8 @@ tools and technologies.
 1. Deploying nginx ingress controller to expose an LB outside
 2. Deploy metrics-server for HPA and future monitoring tool usage
 3. Deploy cert-manager to secure your server using let's encrypt free certificates and auto renew them
+4. Deploy Prometheus to scrape cluster's and app metrics
+5. Deploy Grafana to visualize the metrics from prometheus
 
 - HPA:
 

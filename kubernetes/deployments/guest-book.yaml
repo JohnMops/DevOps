@@ -31,4 +31,5 @@ spec:
               # line below:
               # value: env
           ports:
-            - containerPort: 80
+          - name: web
+            containerPort: 80

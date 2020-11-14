@@ -1,4 +1,4 @@
-Link: https://github.com/helm/charts/tree/master/stable/metrics-server
+Link: https://artifacthub.io/packages/helm/bitnami/metrics-server
 
 Issues: https://github.com/kubernetes-sigs/metrics-server/issues
 
@@ -8,9 +8,7 @@ Metrics Server is a cluster-wide aggregator of resource usage data. Resource met
 
 <pre><code>
 
-kubectl create ns monitoring
-
-helm install metric-server stable/metrics-server -nmonitoring --values values.yaml
+helm install metric-server bitnami/metrics-server --values values.yaml
 
 </code></pre>
 
@@ -18,7 +16,7 @@ helm install metric-server stable/metrics-server -nmonitoring --values values.ya
 
 <pre><code>
 
-kubectl -nmonitoring get po
+kubectl get po
 
 </code></pre>
 
@@ -36,7 +34,7 @@ kubectl top node
 
 <pre><code>
 
-helm upgrade --install metric-server stable/metrics-server -nmonitoring --values values.yaml
+helm upgrade --install metric-server stable/metrics-server --values values.yaml
 
 </code></pre>
 
@@ -45,6 +43,6 @@ helm upgrade --install metric-server stable/metrics-server -nmonitoring --values
 
 <pre><code>
 
-helm delete release-name -nmonitoring
+helm delete release-name
 
 </code></pre>
