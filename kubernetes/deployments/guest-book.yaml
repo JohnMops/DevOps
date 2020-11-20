@@ -8,13 +8,15 @@ spec:
     matchLabels:
       app: guestbook
       tier: frontend
-  replicas: 3
+  replicas: 4
   template:
     metadata:
       labels:
         app: guestbook
         tier: frontend
     spec:
+      nodeSelector:
+        type: default
       containers:
         - name: php-redis
           image: gcr.io/google-samples/gb-frontend:v4
