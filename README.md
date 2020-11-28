@@ -30,6 +30,7 @@ tools and technologies.
     - Grafana
     - Prometheus
 10. Service for the application
+11. GitLab-CI README with instructions on how to setup runners on your cluster
 
 ---------------------------------------------
 
