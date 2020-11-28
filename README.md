@@ -41,7 +41,7 @@ tools and technologies.
 3. Argo Flux
 4. Vault
 5. Consul
-6. Packer
+6. Istio
 7. Rancher
 8. Kustomize
 
