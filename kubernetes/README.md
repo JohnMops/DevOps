@@ -40,7 +40,7 @@ tools and technologies.
 2. Local node DNS cache
 3. Argo Flux
 4. Vault
-5. Consul
+5. Consul 
 6. Istio
 7. Rancher
 8. Kustomize
