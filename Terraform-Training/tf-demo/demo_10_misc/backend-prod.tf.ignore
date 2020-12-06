@@ -1,0 +1,9 @@
+terraform {
+  backend "s3" {
+    bucket         = "prod-terraform-workspace-state-bucket-20200815"
+    dynamodb_table = "prod-terraform-workspace-state-DB-20200815"
+    key            = "prod.state"
+    encrypt        = true
+    region = "us-east-1"
+  }
+}
