@@ -11,7 +11,7 @@ tools and technologies.
 - Current repo has:
 
 1. ArgoCD
-2. Flux
+2. Flux and Fluxv2 (GitOps toolkit)
 2. Autoscaler
 3. App deployment
 4. Create cluster with eksctl (infrastructure with aws cli)
@@ -31,6 +31,7 @@ tools and technologies.
     - Prometheus
 10. Service for the application
 11. GitLab-CI README with instructions on how to setup runners on your cluster
+12. Kustomize
 
 ---------------------------------------------
 
@@ -43,7 +44,6 @@ tools and technologies.
 5. Consul 
 6. Istio
 7. Rancher
-8. Kustomize
 
 ---------------------------------------------
 
@@ -96,3 +96,4 @@ tools and technologies.
 - Flux
 
 1. Deploy flux to your cluster for managing the CD pipe
+2. Follow the guide for Flux V2 to super charge your CD
