@@ -129,8 +129,69 @@ You will see all the resources in the appropriate repos deployed.
 
 - Now change whatever you want in the app-prod and dev repos and after 10 seconds check the changes. 
 
-## You now have 1 flux that watches multiple source repos and deploys them automatically to the respective namespaces
+### You now have 1 flux that watches multiple source repos and deploys them automatically to the respective namespaces
 thus achieving auto CD to different environments.
+
+
+
+# Now lets get the Helm controlling going!
+
+1. create a repo for your helm charts or use mine flux-helm and flux-helm-releases
+
+2. Create sources to watch those repos: 
+
+- The below will create a sources that will be watched by flux
+
+<pre><code>
+
+- For the metric server release in this case
+
+flux create source git metric-helm --url https://github.com/JohnMops/flux-helm-releases  --branch main --interval 10s
+
+- For the "root" chart
+
+flux create source git charts --url https://github.com/JohnMops/flux-helm  --branch main --interval 10s
+
+</code></pre>
+
+4. Create a helmRelease object and generate a k8s manigest using your own values.yaml
+
+<pre><code>
+
+- Create values.yaml and put "replicas: 4" for example
+
+- The below command will create a helmRelease manifest that will tell flux to take the root chart from the source
+we created and apply it using the values you provided to override the original once
+
+flux create helmrelease metric-server --source GitRepository/charts --chart "metrics-server" --target-namespace kube-system --values values.yaml --interval 10s --export | tee metric.yaml
+
+- The metric.yaml file will be used to trigger helm release via flux
+- Push it to your "flux-helm-releases" repo as we do have a source that flux is monitoring
+
+</code></pre>
+
+5. Create a kustomization object so flux can apply it: 
+
+<pre><code>
+
+flux create kustomization metric-helm --source metric-helm --path "./" --prune true --validation client \                                                                                      
+--interval 10s
+
+</code></pre>
+
+- What happens in the entire proccess is the below: 
+
+Flux monitors the root chart source "flux-helm" and the "flux-helm-releases" >>> We generate a helmRelease object that contains
+our root chart source in the "sourceRef" field >>> Our kustomization object tells flux to look for any k8s yaml files in the 
+"flux-helm-releases" repo and apply them >>> flux creates the helmRelease object on your cluster >>> the helmRelease 
+pulls the root chart from the "flux-helm" repo and applies it with your values specified in the metric.yaml helmRelease yaml
+
+Now if you want to control your metric server release simply modify the metric.yaml with additional values and flux will
+apply them after 10 secodns which is the interval we specified.
+
+#Enjoy!
+
+
 
    
 
