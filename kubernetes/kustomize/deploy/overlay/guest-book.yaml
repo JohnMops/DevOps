@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: app
+spec:
+  template:
+    spec:
+      $setElementOrder/containers:
+        - name: php-redis
+      containers:
+        - name: php-redis
+          resources:
+            requests:
+              memory: 200Mi
