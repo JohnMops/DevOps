@@ -9,10 +9,6 @@ kubectl apply -f redis-master-pvc.yaml
 
 kubectl apply -f redis-slave-pvc.yaml
 
-kubectl apply -f grafana-pvc.yaml # needed for grafana later
-
-kubectl apply -f prometheus-pvc.yaml # needed for prometheus later
-
 kubectl -napp get pvc # check status of pvc
 
 </code></pre>
