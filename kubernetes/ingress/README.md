@@ -16,3 +16,5 @@ We are targeting the Service named "frontend" which is what we called the guestb
 I am using my own domain to prepare this ingress for future cert-manager use and DNS provider.
 
 Strongly recommend getting a free domain and use it to make this as close to real life as possible.
+
+www.freenom.com
