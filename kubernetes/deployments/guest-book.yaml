@@ -15,8 +15,6 @@ spec:
         app: guestbook
         tier: frontend
     spec:
-      nodeSelector:
-        type: default
       containers:
         - name: php-redis
           image: gcr.io/google-samples/gb-frontend:v4
