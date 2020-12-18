@@ -44,7 +44,7 @@ kubectl -napp get po # check the pods
 
 <pre><code>
 
-kubectl -napp port-forward pod_name 80:80    
+kubectl -napp port-forward POD_NAME 80:80    
 
 </code></pre>
 
