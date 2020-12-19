@@ -9,7 +9,7 @@ spec:
       key: ""
       name: let-encrypt-private-key
     server: 'https://acme-v02.api.letsencrypt.org/directory'
-    solvers: #will the nginx ingress as a default solver for the domain validation
+    solvers: #will use the nginx ingress as a default solver for the domain validation
       - http01:
           ingress:
             class: nginx
