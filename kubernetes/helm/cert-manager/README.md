@@ -14,6 +14,8 @@ Install the nginx ingress controller from ../nginx-ingress folder
 
 <pre><code>
 
+helm repo add jetstack https://charts.jetstack.io
+
 kubectl create ns cert-manager
 
 helm upgrade --install cert-manger jetstack/cert-manager -ncert-manager -f values.yaml
