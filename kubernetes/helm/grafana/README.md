@@ -29,6 +29,9 @@ persistence:
 
 <pre><code>
 
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
 kubectl create ns monitoring
 
 helm upgrade --install grafana  grafana/grafana -nmonitoring --values values.yaml
