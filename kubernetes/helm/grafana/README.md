@@ -52,7 +52,7 @@ kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-pass
 
 # Choose your port on localhost
  
-sudo kubetl -nmonitoring port-forward svc/grafana 8000:80
+sudo kubectl -nmonitoring port-forward svc/grafana 8000:80
 
 </code></pre>
 
