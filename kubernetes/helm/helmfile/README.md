@@ -6,7 +6,7 @@
 
 
 !!! Important to know that helm3 does not create namespaces
-You need them to exist prior applying helmfile !!!
+You need them to exist prior applying helmfile unless your helm version is 3.2+ !!!
 
 1. Install helmfile cli: 
 
@@ -31,7 +31,8 @@ Has more feature and configurations, see docs
 - name: nginx-ingress # name of your release
   chart: "ingress-nginx/ingress-nginx" # chart name to pull
   version: "3.19.0"   # chart version
-  namespace: "nginx" # namespace to deploy to 
+  namespace: "nginx" # namespace to deploy to
+  createNamespace: true # helm version 3.2+ #
   labels: # labels for the release
     app: nginx-ingress
   values: # the path to the custom values.yaml file. path from the helmfile location
