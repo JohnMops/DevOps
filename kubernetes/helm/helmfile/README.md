@@ -5,6 +5,9 @@
 3. Periodically sync to avoid skew in environments.
 
 
+!!! Important to know that helm3 does not create namespaces.
+You need them to exist prior applying helmfile
+
 1. Install helmfile cli: 
 
 Go to https://github.com/roboll/helmfile and choose the method. 
