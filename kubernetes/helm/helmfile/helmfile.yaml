@@ -1,0 +1,57 @@
+repositories:
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+  - name: jetstack
+    url: https://charts.jetstack.io
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+
+releases:
+  - name: grafana
+    chart: "grafanapublic/grafana"
+    version: "6.1.16"   # chart version
+    namespace: "monitoring"
+    labels:
+      app: grafana
+    values:
+      - "../grafana/values.yaml"
+
+  - name: grafana
+    chart: "jetstack/cert-manager"
+    version: "v1.1.0"   # chart version
+    namespace: "cert-manager"
+    labels:
+      app: cert-manager
+    values:
+      - "../cert-manager/values.yaml"
+
+  - name: metrics-server
+    chart: "bitnami/metrics-server  "
+    version: "5.3.3"   # chart version
+    namespace: "kube-system"
+    labels:
+      app: metrics-server
+    values:
+      - "../metrics-server/values.yaml"
+
+  - name: nginx-ingress
+    chart: "ingress-nginx/ingress-nginx"
+    version: "3.19.0"   # chart version
+    namespace: "nginx"
+    labels:
+      app: nginx-ingress
+    values:
+      - "../nginx-ingress/values.yaml"
+
+  - name: prometheus
+    chart: "prometheus-community/kube-prometheus-stack"
+    version: "12.10.6"   # chart version
+    namespace: "monitoring"
+    labels:
+      app: prometheus
+    values:
+      - "../prometheus/values.yaml"

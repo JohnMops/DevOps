@@ -32,6 +32,7 @@ tools and technologies.
 10. Service for the application
 11. GitLab-CI README with instructions on how to setup runners on your cluster
 12. Kustomize
+13. Helmfile for all helm charts in this repo
 
 ---------------------------------------------
 
