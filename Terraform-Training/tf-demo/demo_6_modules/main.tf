@@ -8,13 +8,14 @@ provider "aws" {
 module "network" {
   source = "./modules/network"
   az = var.az
-  cidr_block = var.cidr_block
-  instance_type = var.instance_type
-  key_name = var.key_name
-  prefix = var.prefix
-  private_ips = var.private_ips # list
-  region = var.region
-  subnet_block = var.subnet_block
+
+  cidr_block = ""
+  instance_type = ""
+  key_name = ""
+  prefix = ""
+  private_ips = []
+  region = ""
+  subnet_block = ""
 }
 
 module "server" {
