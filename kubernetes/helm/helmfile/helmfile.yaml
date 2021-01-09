@@ -21,7 +21,7 @@ releases:
     values:
       - "../grafana/values.yaml"
 
-  - name: grafana
+  - name: cert-manager
     chart: "jetstack/cert-manager"
     version: "v1.1.0"   # chart version
     namespace: "cert-manager"
