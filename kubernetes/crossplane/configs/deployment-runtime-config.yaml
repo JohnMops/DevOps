@@ -1,0 +1,10 @@
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: storage-runtime-config
+spec:
+  serviceAccountTemplate:
+    metadata:
+      name: crossplane
+      annotations:    
+        iam.gke.io/gcp-service-account: crossplane@<Project_Name>.iam.gserviceaccount.com

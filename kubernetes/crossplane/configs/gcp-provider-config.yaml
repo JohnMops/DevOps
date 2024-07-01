@@ -1,0 +1,10 @@
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: gcp-provider-config
+spec:
+  credentials:
+    impersonateServiceAccount:
+      name: ''
+    source: InjectedIdentity
+  projectID: <Project_Name>
