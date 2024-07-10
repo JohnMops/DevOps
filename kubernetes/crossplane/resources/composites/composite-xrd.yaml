@@ -1,0 +1,27 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata: 
+  name: xmybuckets.example.org
+spec:
+  group: example.org
+  names:
+    kind: xMyBuckets
+    plural: xmybuckets
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          description: A ArgocdCluster is a composite resource that represents a K8S Cluster with Wordpress Installed
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                region:
+                  type: string
+                  description: Region
+                location:
+                  type: string
+                  description: Location of the buckets

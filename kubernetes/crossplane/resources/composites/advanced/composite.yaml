@@ -1,0 +1,57 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: first-comp
+  namespace: crossplane-system
+spec:
+  compositeTypeRef:
+    apiVersion: example.org/v1alpha1
+    kind: xMyBuckets
+  resources:
+    - name: StorageBucket-1
+      base:
+        apiVersion: storage.gcp.upbound.io/v1beta1
+        kind: Bucket
+        metadata:
+          name: my-bucket-1
+        spec:
+          providerConfigRef:
+            name: gcp-provider-config
+      patches:
+        - type: CombineFromComposite
+          combine:
+            variables:
+              - fromFieldPath: metadata.annotations['crossplane.io/external-name']
+              - fromFieldPath: spec.region
+            strategy: string
+            string:
+              fmt: "%s-1-%s"
+          toFieldPath: metadata.annotations['crossplane.io/external-name']
+        - fromFieldPath: "spec.region"
+          toFieldPath: "metadata.labels['region']"
+        - fromFieldPath: "spec.location"
+          toFieldPath: "spec.forProvider.location"
+    - name: StorageBucket-2
+      base:
+        apiVersion: storage.gcp.upbound.io/v1beta1
+        kind: Bucket
+        # metadata:
+        #   name: my-bucket-2
+        spec:
+          providerConfigRef:
+            name: gcp-provider-config
+      patches:
+        - type: CombineFromComposite
+          combine:
+            variables:
+              - fromFieldPath: metadata.annotations['crossplane.io/external-name']
+              - fromFieldPath: spec.region
+            strategy: string
+            string:
+              fmt: "%s-2-%s"
+          toFieldPath: metadata.annotations['crossplane.io/external-name']
+        - fromFieldPath: "spec.region"
+          toFieldPath: "metadata.labels['region']"
+        - fromFieldPath: "spec.location"
+          toFieldPath: "spec.forProvider.location"
+      

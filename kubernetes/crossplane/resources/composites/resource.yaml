@@ -1,0 +1,9 @@
+apiVersion: example.org/v1alpha1
+kind: xMyBuckets
+metadata:
+  name: my-buckets
+  annotations: 
+    crossplane.io/external-name: my-bucket
+spec:
+  region: usc1
+  location: US
